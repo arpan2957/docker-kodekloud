@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  task1:
+    image: docker
+    command: docker run --rm --name kodekloud --privileged --init ubuntu sleep 60
+    networks:
+      - bridge
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: global
+      restart_policy: 
+        condition: none
+
+networks:
+  bridge:
+    external: true
+    name: bridge

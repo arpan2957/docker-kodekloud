@@ -1,0 +1,13 @@
+#!/bin/bash
+$SECONDS=30
+dockerd &
+(( timeout = 60 + SECONDS ))
+until docker info >/dev/null 2>&1
+do
+	if (( SECONDS >= timeout )); then
+		echo 'Timed out trying to connect to internal docker host.' >&2
+		break
+	fi
+	sleep 1
+done
+exec bash --login
