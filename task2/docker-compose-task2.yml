@@ -3,7 +3,7 @@ services:
   task2:
     image: docker
     init: true
-    command: docker run --rm --init -dt --name kodekloud-master --privileged kodekloud 
+    command: docker run --rm  --name kodekloud-master --privileged --init kodekloud tail -f /dev/null
     networks:
       - bridge
     volumes:

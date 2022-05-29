@@ -2,7 +2,8 @@ version: '3.9'
 services:
   task1:
     image: docker
-    command: docker run --rm --name kodekloud --privileged --init ubuntu sleep 60
+    init: true
+    command: docker run --rm --name kodekloud --privileged --init nginx
     networks:
       - bridge
     volumes:
