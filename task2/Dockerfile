@@ -7,8 +7,6 @@ RUN apt-get update -qq && apt-get install -qqy \
     curl \
     lxc \
     iptables \
-    apparmor-easyprof \
-    apparmor-notify \
     apparmor-utils \
     apparmor-profiles
     
@@ -16,11 +14,11 @@ RUN apt-get update -qq && apt-get install -qqy \
 RUN curl -sSL https://get.docker.com/ | sh
 
 # Install the script.
-ADD ./daemonscript /root/daemonscript
-RUN chmod +x /root/daemonscript
+ADD ./daemonscript /usr/local/bin/daemonscript
+RUN chmod +x /usr/loca/bin/daemonscript
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
 
 #Run docker daemon
-CMD ["/root/daemonscript"]
+CMD ["daemonscript"]

@@ -1,5 +1,4 @@
 #!/bin/bash
-$SECONDS=30
 dockerd &
 (( timeout = 60 + SECONDS ))
 until docker info >/dev/null 2>&1
