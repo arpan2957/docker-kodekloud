@@ -21,4 +21,4 @@ RUN chmod +x /usr/local/bin/daemonscript
 VOLUME /var/lib/docker
 
 #Run docker daemon
-CMD ["daemonscript"]
+ENTRYPOINT ["daemonscript"]

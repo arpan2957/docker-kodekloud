@@ -18,7 +18,8 @@ then
     }
 fi
 
-dockerd &
+service docker start
+
 (( timeout = 60 + SECONDS ))
 until docker info >/dev/null 2>&1
 do
