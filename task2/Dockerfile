@@ -15,7 +15,7 @@ RUN curl -sSL https://get.docker.com/ | sh
 
 # Install the script.
 ADD ./daemonscript /usr/local/bin/daemonscript
-RUN chmod +x /usr/loca/bin/daemonscript
+RUN chmod +x /usr/local/bin/daemonscript
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
