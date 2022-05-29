@@ -28,3 +28,20 @@ do
 	fi
 	sleep 1
 done
+
+apparmor_parser -q -r <<EOF
+#include <tunables/global>
+profile deny-write flags=(attach_disconnected) {
+  #include <abstractions/base>
+  file,
+  network,
+  deny /tmp/** w,
+  capability,
+}
+EOF
+
+docker run -td --rm --init --name ubuntu-one --security-opt apparmor=deny-write ubuntu
+docker run -td --rm --init --name ubuntu-two --security-opt apparmor=deny-write ubuntu
+
+[[ $1 ]] && exec "$@"
+exec bash --login

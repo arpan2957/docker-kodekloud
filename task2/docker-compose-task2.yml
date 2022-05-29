@@ -2,12 +2,8 @@ version: '3.9'
 services:
   task2:
     image: docker
-    command: 
-      - /bin/sh
-      - -c
-      - |
-        echo "docker run -d --init --name ubuntu-one ubuntu; docker run -d --init --name ubuntu-two ubuntu" | docker run --rm --name kodekloud-master --privileged --init -i kodekloud
-    #command: docker run --rm --name ubuntu-one --init ubuntu
+    init: true
+    command: docker run --rm --init -dt --name kodekloud-master --privileged kodekloud 
     networks:
       - bridge
     volumes:
